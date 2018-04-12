@@ -42,13 +42,14 @@ class ColorChange {
     this.div = div;
   }
   
+  // changeColor(colorIndex: number): boolean;
+  // changeColor(colorName: string): boolean;
   changeColor(color: number | string): boolean {
     if (typeof color === 'number') {
       return true;
-    } else if (typeof color === 'string') {
-      (this.div as HTMLElement).style.backgroundColor = Colors[color];
-      return true;
-    }   
+    }
+    (this.div as HTMLElement).style.backgroundColor = color;
+    return true;   
   }
 }
 
@@ -59,11 +60,11 @@ class numericColor extends ColorChange {
     (this.div as HTMLElement).style.width = squareSize;
     (this.div as HTMLElement).style.height = squareSize;
     (this.div as HTMLElement).className = 'colorized';
-
   }
 
-  changeColor(color: number): boolean {
-    (this.div as HTMLElement).style.backgroundColor = Colors[color];
+  changeColor(color: number | string): boolean {
+    super.changeColor(color);
+    (this.div as HTMLElement).style.backgroundColor = Colors[(color as number)];
     return true;
   }
 }
@@ -71,11 +72,13 @@ class numericColor extends ColorChange {
 const colors: Function = (): void => {
   elementSets.map((elem, index) => {
     const div = new numericColor(elem.div);
-    (elem.button as HTMLElement).innerText = 'Click to colorize';
+    (elem.button as HTMLElement).innerText = 'Change color';
     container.appendChild(elem.div);
+    // set default color by either taking from Colors or by passing a string
+    div.changeColor(index);
+    // div.changeColor('violet');
     container.appendChild(elem.button);
     elem.button.addEventListener('click', event => {
-      // div.changeColor(Colors[index]);
       div.changeColor(getRandomIntInclusive(0, 4));
     });
   });

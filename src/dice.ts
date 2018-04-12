@@ -1,16 +1,12 @@
-const getRandomIntInclusive: Function = (min, max) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+import getRandomIntInclusive from './helpers/getRandomIntInclusive';
 
 enum DieValues {
-  One,
-  Two,
-  Three,
-  Four,
-  Five,
-  Six
+  '*',
+  '**',
+  '***',
+  '**\n**',
+  '**\n*\**',
+  '***\n***'
 }
 
 interface DieOptions {
@@ -41,6 +37,9 @@ const dieOptions: DieOptions[] = [
 ]
 
 class DieRoller extends Die {
+
+  static container: Element = document.getElementById('dice');
+
   die: Element;
   button: Element;
 
@@ -57,7 +56,7 @@ class DieRoller extends Die {
     (this.die as HTMLElement).style.height = sizeForCss;
     (this.die as HTMLElement).style.border = this.options.border;
     (this.die as HTMLElement).innerText = this.value;
-    document.body.appendChild(this.die);
+    DieRoller.container.appendChild(this.die);
   }
 
   rollDice(): boolean {
@@ -69,17 +68,22 @@ class DieRoller extends Die {
 
 const dice: DieRoller[] = [];
 
-dieOptions.forEach(die => {
-  const dieInstance = new DieRoller(die);
-  dice.push(dieInstance);
-});
+const diceFunction: Function = (): void => {
+  console.log('from diceFunction');
+  dieOptions.forEach(die => {
+    const dieInstance = new DieRoller(die);
+    dice.push(dieInstance);
+  });
+  
+  const button: Element = document.createElement('button');
+  (button as HTMLElement).innerText = 'Roll the dice';
+  DieRoller.container.appendChild(button);
+  button.addEventListener('click', () => {
+    for (let i = 0; i < dieOptions.length; i++) {
+      dice[i].rollDice();
+    }
+  });
+}
 
-const button: Element = document.createElement('button');
-(button as HTMLElement).innerText = 'Roll the dice';
-document.body.appendChild(button);
-button.addEventListener('click', () => {
-  for (let i = 0; i < dieOptions.length; i++) {
-    dice[i].rollDice();
-  }
-});
+export default diceFunction;
 

@@ -1,6 +1,41 @@
-.dice {
+* {
+  font-family: sans-serif;
+}
+
+h2 {
+  color: #333461;
+}
+
+section {
   display: flex;
   justify-content: center;
+  align-items: center; 
+  margin: 10px;
+  padding: 20px;
+  background-color: #e6e6e6;
+}
+
+button {
+  margin: 20px;
+  padding: 3px 5px;
+  border-radius: 3px;
+  background: transparent;
+  border: 1px solid #803c00;
+}
+
+.section--colors {
+  flex-direction: column;
+}
+
+.colorized {
+  border: 1px solid #000;
+}
+
+.dice {
+  display: flex;
+  margin: 15px;
+  justify-content: center;
   align-items: center;
-  font-family: Helvetica, sans-serif;
+  font-size: 20px;
+  text-align: center;
 }

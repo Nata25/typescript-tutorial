@@ -19,11 +19,24 @@ module.exports = {
       {
         test: /\.ts$/,
         loader: 'awesome-typescript-loader'
+      }, 
+      {
+        test: /\.css/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' }
+        ]
       }
     ]
   },
 
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
+
   devServer: {
+    hot: true,
+    port: 9000,
     watchOptions: {
       poll: true
     },

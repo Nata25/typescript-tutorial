@@ -1,7 +1,5 @@
-// import colors from './colors.js';
-import dice from './dice.js'
+import colors from 'colors';
+import dice from 'dice'
 
-// import './styles.css';
-
-// colors();
+colors();
 dice();

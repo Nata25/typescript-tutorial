@@ -1,12 +1,8 @@
-// <reference path="DiceStyling.ts" />
+/// <reference path="DieNamespace.ts" />
 
-// import getRandomIntInclusive from 'helpers/getRandomIntInclusive';
+import getRandomIntInclusive from 'helpers/getRandomIntInclusive';
 
-const getRandomIntInclusive: Function = (min: number, max: number) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+const dieOptions: Array<DieNamespace.DieOptionsInterface> = DieNamespace.options;
 
 enum DieValues {
   '*',
@@ -17,32 +13,15 @@ enum DieValues {
   '***\n***'
 }
 
-interface DieOptions {
-  width: number;
-  border?: string;
-  color?: string;
-}
-
 class Die {
-  options: DieOptions;
+  options: DieNamespace.DieOptionsInterface;
   value: string;
 
-  constructor(dieOptions: DieOptions) {
+  constructor(dieOptions: DieNamespace.DieOptionsInterface) {
     this.options = dieOptions;
     this.value = DieValues[getRandomIntInclusive(0, 5)];
   }
 }
-
-const dieOptions: DieOptions[] = [
-  {
-    width: 100,
-    border: '1px solid'
-  },
-  {
-    width: 100,
-    border: '1px solid'
-  }
-]
 
 class DieRoller extends Die {
 
@@ -51,7 +30,7 @@ class DieRoller extends Die {
   die: Element;
   button: Element;
 
-  constructor(die: DieOptions) {
+  constructor(die: DieNamespace.DieOptionsInterface) {
     super(die);
     this.initDie();
   }
@@ -60,8 +39,6 @@ class DieRoller extends Die {
     this.die = document.createElement('div');
     const sizeForCss = `${this.options.width}px`;
     this.die.className = 'dice';
-    // const options = DiceStyling.options;
-    // console.log('Styling options', options);
     (this.die as HTMLElement).style.width = sizeForCss;
     (this.die as HTMLElement).style.height = sizeForCss;
     (this.die as HTMLElement).style.border = this.options.border;
@@ -92,12 +69,6 @@ const diceFunction: Function = (): void => {
       dice[i].rollDice();
     }
   });
-
-  
-}
-
-const test: Function = () => {
-  console.log('from diceFunction');
 }
 
 export default diceFunction;

@@ -30,3 +30,12 @@ button {
 .colorized {
   border: 1px solid #000;
 }
+
+.dice {
+  display: flex;
+  margin: 15px;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  text-align: center;
+}

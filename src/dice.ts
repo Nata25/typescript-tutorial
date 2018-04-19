@@ -1,4 +1,12 @@
-import getRandomIntInclusive from './helpers/getRandomIntInclusive';
+// <reference path="DiceStyling.ts" />
+
+// import getRandomIntInclusive from 'helpers/getRandomIntInclusive';
+
+const getRandomIntInclusive: Function = (min: number, max: number) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 enum DieValues {
   '*',
@@ -52,6 +60,8 @@ class DieRoller extends Die {
     this.die = document.createElement('div');
     const sizeForCss = `${this.options.width}px`;
     this.die.className = 'dice';
+    // const options = DiceStyling.options;
+    // console.log('Styling options', options);
     (this.die as HTMLElement).style.width = sizeForCss;
     (this.die as HTMLElement).style.height = sizeForCss;
     (this.die as HTMLElement).style.border = this.options.border;
@@ -69,7 +79,6 @@ class DieRoller extends Die {
 const dice: DieRoller[] = [];
 
 const diceFunction: Function = (): void => {
-  console.log('from diceFunction');
   dieOptions.forEach(die => {
     const dieInstance = new DieRoller(die);
     dice.push(dieInstance);
@@ -83,6 +92,12 @@ const diceFunction: Function = (): void => {
       dice[i].rollDice();
     }
   });
+
+  
+}
+
+const test: Function = () => {
+  console.log('from diceFunction');
 }
 
 export default diceFunction;

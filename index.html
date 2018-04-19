@@ -1,18 +1,28 @@
 <html>
     <header>
         <title>TypeScript Labs</title>
+        <link rel="stylesheet" href="src/styles.css" />
     </header>
     <body>
         <main>
-            <section id="colors" class="section--colors">
+            <!-- <section id="colors" class="section--colors">
                 <h2>Colorize divs!</h2>
-            </section>
+            </section> -->
 
             <section id="dice">
                 <h2>Roll the dice!</h2>
             </section>
         </main>
 
-        <script src="app.js"></script>
+        <!-- <script data-main="dist/app" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.3/require.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.20.12/system.js"></script>
+        <script>
+            SystemJS.config({
+                map: {
+                    'lodash': './node_modules/lodash/lodash.js'
+                }
+            });
+            SystemJS.import('dist/app.js')
+        </script>
     </body>
 </html>

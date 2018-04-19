@@ -1,8 +1,16 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
+        "module": "commonJS",
         "target": "es5",
         "noImplicitAny": true,
-        "sourceMap": false
+        "sourceMap": false,
+        // "outFile": "dist/app.js",
+        "outDir": "dist",
+        "moduleResolution": "classic"
     }
+    // "files": [
+    //     "src/DiceStyling.ts",
+    //     "src/dice.ts",
+    //     "src/app.ts"
+    // ]
 }

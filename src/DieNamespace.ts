@@ -1,5 +1,14 @@
 namespace DieNamespace {
 
+  export enum DieValues {
+    '*',
+    '**',
+    '***',
+    '**\n**',
+    '**\n*\**',
+    '***\n***'
+  }
+
   export interface DieOptionsInterface {
     width: number;
     border?: string;

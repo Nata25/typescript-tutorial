@@ -6,9 +6,5 @@
         "sourceMap": false,
         "outFile": "dist/app.js",
         "moduleResolution": "classic"
-    },
-    "files": [
-        "src/dice.ts",
-        "src/app.ts"
-    ]
+    }
 }

@@ -12,18 +12,23 @@
                 <h2>Colorize divs!</h2>
             </section>
         </main>
-        <script src="libs/chance/chance.js"></script>
+        <!-- <script src="libs/chance/chance.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chance/1.0.13/chance.min.js"></script>
         <script data-main="dist/app" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.3/require.js"></script>
         <script>
-                requirejs.config({
-                        packages: [{ 
-                            name: 'lodash',
-                            // location: '../libs/lodash-amd' // lodash exported as AMD module (needs to be copied from node_modules)
-                            location: '../libs/lodash', // raw .js file
-                            main: 'lodash' // + only for .js 
-                        }]
-                    });
-            </script>
-        
+            requirejs.config({
+                packages: [{ 
+                    name: 'lodash',
+                    // ** for lodash.js file saved locally in /libs/lodash:
+                    // location: '../libs/lodash',
+                    // main: 'lodash'
+                    // ** for cdn //cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.core.min.js
+                    location: '//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5',
+                    main: 'lodash.core.min' 
+                    // ** for lodash exported as AMD module (installed via npm; needs to be moved manually from node_modules/ to libs/lodash-amd)
+                    // location: '../libs/lodash-amd' 
+                }]
+            });
+        </script>
     </body>
 </html>

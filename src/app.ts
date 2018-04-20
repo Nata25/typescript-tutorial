@@ -1,5 +1,5 @@
 import colors from 'colors';
-import dice from 'dice'
+import dice from 'dice';
 
 colors();
 dice();

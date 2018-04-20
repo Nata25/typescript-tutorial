@@ -1,5 +1,6 @@
 /// <reference path="DieNamespace.ts" />
 
+import * as _ from 'lodash';
 import DiceRoller from 'DiceRoller';
 
 const dieOptions: Array<DieNamespace.DieOptionsInterface> = DieNamespace.options;
@@ -7,9 +8,9 @@ const dieOptions: Array<DieNamespace.DieOptionsInterface> = DieNamespace.options
 const dice: DiceRoller[] = [];
 
 const diceFunction: Function = (): void => {
-  dieOptions.forEach(die => {
-    const dieInstance = new DiceRoller(die);
-    dice.push(dieInstance);
+  _.each(dieOptions, die => {
+      const dieInstance = new DiceRoller(die);
+      dice.push(dieInstance);
   });
   
   const button: Element = document.createElement('button');

@@ -12,8 +12,18 @@
                 <h2>Colorize divs!</h2>
             </section>
         </main>
-
         <script data-main="dist/app" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.3/require.js"></script>
+        <script>
+                requirejs.config({
+                        packages: [{ 
+                            name: 'lodash',
+                            // location: '../libs/lodash-amd' // lodash exported as AMD module (needs to be copied from node_modules)
+                            location: '../libs/lodash', // raw .js file
+                            main: 'lodash' // + only for .js 
+                            
+                        }]
+                    });
+            </script>
         
     </body>
 </html>

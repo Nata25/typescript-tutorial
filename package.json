@@ -9,6 +9,7 @@
   "author": "natalyas.ivanova@gmail.com",
   "license": "ISC",
   "devDependencies": {
+    "@types/chance": "^1.0.0",
     "@types/lodash": "^4.14.107",
     "typescript": "^2.8.1"
   },

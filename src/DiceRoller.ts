@@ -1,6 +1,5 @@
 /// <reference path="DieNamespace.ts" />
 
-import getRandomIntInclusive from 'helpers/getRandomIntInclusive';
 import Die from 'Die';
 
 class DiceRoller extends Die {
@@ -27,7 +26,7 @@ class DiceRoller extends Die {
   }
 
   rollDice(): boolean {
-    this.value = DieNamespace.DieValues[getRandomIntInclusive(0, 3)];
+    this.value = DieNamespace.DieValues[chance.integer({min: 0, max: 5})];
     (this.die as HTMLElement).innerText = this.value;
     return true;
   }
